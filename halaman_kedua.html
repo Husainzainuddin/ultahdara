@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun!</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #e0f7fa;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            color: #333;
+            overflow: hidden; /* Menyembunyikan overflow */
+            position: relative; /* Posisi relatif untuk anak-anak emot */
+        }
+        .container {
+            display: flex;
+            align-items: center; /* Menyelaraskan tombol dengan gambar */
+            position: relative; /* Posisi relatif untuk mengatur gambar dan tombol */
+            z-index: 2; /* Mengatur z-index agar tetap di depan */
+        }
+        img {
+            width: 200px; /* Atur lebar gambar sesuai kebutuhan */
+            border-radius: 10px; /* Untuk memberikan efek sudut yang melengkung */
+            margin: 0 20px; /* Jarak antara gambar dan emoticon */
+        }
+        h1, p {
+            opacity: 0; /* Mengatur opacity menjadi 0 untuk efek transisi */
+            transform: translateY(20px); /* Mengatur posisi awal */
+            transition: opacity 1s ease, transform 1s ease; /* Mengatur transisi */
+            z-index: 2; /* Mengatur z-index agar tetap di depan */
+            position: relative; /* Posisi relatif untuk teks */
+        }
+        h1.show, p.show {
+            opacity: 1; /* Mengubah opacity menjadi 1 */
+            transform: translateY(0); /* Kembali ke posisi awal */
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #ff4500;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            display: none; /* Sembunyikan tombol awalnya */
+        }
+        .emot {
+            position: absolute;
+            font-size: 24px;
+            animation: float 5s linear infinite;
+            pointer-events: none; /* Menghindari interaksi dengan emot */
+            z-index: 1; /* Mengatur z-index agar berada di belakang teks dan gambar */
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="dara.jpg" alt="Ucapan Ulang Tahun" />
+        <button id="play-button">Putar Musik</button>
+    </div>
+    
+    <audio id="background-music" autoplay loop>
+        <source src="ulangtahun.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+    
+    <h1 id="title">Selamat Ulang Tahun Hadrah yang ke-22</h1>
+    <p id="line1">Semoga panjang umur dan sehat selalu</p>
+    <p id="line2">Semoga dimudahkan tugas akhirnya</p>
+    <p id="line3">Jaga kesehatanta, ingat jauhki dari orang tua</p>
+    <p id="line4">Ingatki harapan orang tua yang pertama nah </p>
+    <p id="line5">Minta maafka baru ini jii bisa kukasih ki</p>
+    <p id="line7">I look forward to the day when distance is just a memory🤲</p>
+    <p id="line8">Yakinkan ada saatnya sama-sama</p>
+    <p class="footer" id="footer">"Dari hamba Allah yang mencintaimu"</p> 
+
+    <script>
+        // Menambahkan kelas 'show' setelah waktu tertentu untuk efek transisi
+        window.onload = () => {
+            const elements = ['title', 'line1', 'line2', 'line3', 'line4', 'line5','line6','line7', 'footer'];
+            elements.forEach((id, index) => {
+                setTimeout(() => {
+                    document.getElementById(id).classList.add('show');
+                }, index * 2000); // Mengatur jeda waktu untuk setiap elemen
+            });
+
+
+            const audio = document.getElementById('background-music');
+            audio.currentTime = 28; // Memulai audio dari detik ke-28
+            audio.play().catch(function(error) {
+                console.log("Audio tidak bisa diputar otomatis. Pengguna perlu berinteraksi terlebih dahulu.");
+                document.getElementById('play-button').style.display = 'block'; // Tampilkan tombol jika gagal
+            });
+
+            // Menangani klik pada tombol untuk memutar musik
+            document.getElementById('play-button').onclick = function() {
+                audio.currentTime = 28; // Memulai audio dari detik ke-28 saat tombol diklik
+                audio.play().catch(function(err) {
+                    console.error("Gagal memutar audio: ", err);
+                });
+                this.style.display = 'none'; // Sembunyikan tombol setelah diklik
+            };
+
+            // Menambahkan emoticon secara acak di samping gambar
+            const emoticons = ['🤩', '🥳', '😎']; // Daftar emoticon
+            setInterval(() => {
+                const emot = document.createElement('div');
+                emot.className = 'emot';
+                // Pilih emoticon secara acak
+                emot.innerText = emoticons[Math.floor(Math.random() * emoticons.length)];
+                // Menentukan posisi acak di samping gambar
+                const side = Math.random() < 0.5 ? 'left' : 'right'; // Memilih kiri atau kanan
+                const randomY = Math.random() * (window.innerHeight - 200) + 100; // Menghindari batas atas (agar tidak masuk area teks)
+                emot.style[side] = '20px'; // Mengatur posisi kiri atau kanan
+                emot.style.top = randomY + 'px'; // Posisi vertikal acak
+                document.body.appendChild(emot);
+
+                // Menghapus emoticon setelah beberapa detik
+                setTimeout(() => {
+                    document.body.removeChild(emot);
+                }, 5000);
+            }, 500); // Interval untuk muncul emoticon
+        };
+    </script>
+</body>
+</html>

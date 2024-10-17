@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kado untuk Darong</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column; /* Mengatur agar elemen ditata secara vertikal */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('background.jpg'); /* Menggunakan gambar latar belakang */
+            background-size: cover; /* Mengatur agar gambar memenuhi layar */
+            background-position: center; /* Menempatkan gambar di tengah */
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 20px; /* Menambahkan padding */
+            overflow: hidden; /* Menyembunyikan elemen yang melampaui batas */
+        }
+        .container {
+            display: flex;
+            flex-direction: column; /* Menyusun elemen dalam kolom */
+            align-items: center; /* Menyelaraskan elemen secara horizontal */
+            justify-content: center; /* Menyelaraskan elemen secara vertikal */
+        }
+        h1 {
+            font-size: 36px; /* Ukuran font */
+            color: black; /* Mengubah warna tulisan menjadi hitam */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Menambahkan bayangan pada teks */
+            margin: 10px 0; /* Menambahkan jarak atas dan bawah */
+            z-index: 1; /* Mengatur z-index agar teks berada di atas */
+            margin-left: -300px; /* Menggeser teks ke kiri sekitar 20 cm */
+        }
+        img {
+            width: 200px; /* Memperkecil ukuran gambar */
+            border-radius: 10px; /* Sudut melengkung */
+            margin: 20px 0; /* Menambahkan jarak atas dan bawah */
+            z-index: 1; /* Mengatur z-index agar gambar berada di atas */
+            margin-left: -300px; /* Menggeser gambar ke kiri sekitar 20 cm */
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: black; /* Warna latar belakang tombol diubah menjadi hitam */
+            color: #6DD3CE; /* Warna teks tombol diubah menjadi hijau sesuai dengan gambar */
+            border: none; /* Menghilangkan border */
+            border-radius: 5px; /* Sudut melengkung */
+            cursor: pointer; /* Mengubah cursor saat hover */
+            margin-top: 10px; /* Menambahkan jarak atas untuk tombol */
+            margin-left: -300px; /* Menggeser tombol ke kiri sekitar 20 cm */
+        }
+        button:hover {
+            background-color: #5AB2B5; /* Warna saat hover */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1> Untuk Sipaling Spd 🥰</h1> <!-- Menambahkan emoji love di sini -->
+        <img src="hadrah.jpg" alt="Ucapan Ulang Tahun" />
+        <button onclick="window.location.href='halaman_kedua.html'">Buka</button>
+    </div>
+
+</body>
+</html>
